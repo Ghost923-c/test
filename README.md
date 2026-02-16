@@ -9,7 +9,7 @@ A lightweight browser app for law-firm technology and communications teams to ru
 - Calculates maturity level (`Emerging`, `Developing`, `Advanced`).
 - Generates practical recommendations.
 - Exports audit results as JSON.
-- Includes a placeholder function (`generateAiSummary`) where you can later connect OpenAI.
+- Includes a placeholder function (`generateAiSummary`) where you can later connect to CRM
 
 ## Run locally
 
