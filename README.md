@@ -6,14 +6,26 @@ A lightweight browser app for law-firm technology and communications teams to ru
 
 - Captures business and audit contact details.
 - Scores six AI readiness categories (1-5).
-- Calculates maturity level (`Emerging`, `Developing`, `Advanced`).
+- Includes extended South African financial-sector AI research questions (Q19-Q24).
+- Includes a multi-select checklist of generative AI value-chain use cases.
+- Displays visual graphs:
+  - Peer benchmark graph: AI adoption by sector in South African financial services
+  - Peer benchmark graph: intended AI investment bands (2024)
+  - Category score bar graph for each audit
+  - Maturity donut graph for each audit
 - Generates practical recommendations.
-- Exports audit results as JSON.
-- Includes a placeholder function (`generateAiSummary`) where you can later connect to CRM.
+- Lets you download audit files as JSON, CSV, and text report (`.txt`).
+- Includes a placeholder function (`generateAiSummary`) where you can later connect OpenAI.
+
+## Logo setup
+
+Add the provided leopard logo image to this path:
+
+`assets/leopard-logo.png`
+
+The main banner loads the logo from that path.
 
 ## Run locally
-
-Because this is a static app, open `index.html` directly or run a simple server:
 
 ```bash
 python3 -m http.server 8000
