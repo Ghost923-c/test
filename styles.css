@@ -24,15 +24,31 @@ body {
 }
 
 .hero {
-  padding: 2rem 1rem;
-  background: linear-gradient(120deg, var(--primary), #0f766e);
+  padding: 1.4rem 1rem;
+  background: linear-gradient(120deg, #2e1065, #1f4f99 55%, #0f766e);
   color: #fff;
 }
 
-.hero > div,
+.hero-wrap {
+  display: grid;
+  grid-template-columns: minmax(180px, 320px) 1fr;
+  gap: 1rem;
+  align-items: center;
+}
+
+.hero-logo {
+  width: 100%;
+  max-height: 170px;
+  object-fit: contain;
+  border-radius: 0.7rem;
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.24);
+}
+
 main,
-footer {
-  max-width: 1000px;
+footer,
+.hero > div {
+  max-width: 1100px;
   margin: 0 auto;
 }
 
@@ -88,7 +104,8 @@ textarea {
   padding: 0.55rem 0.65rem;
 }
 
-.question {
+.question,
+.checkbox-row {
   border: 1px solid var(--border);
   border-radius: 0.55rem;
   padding: 0.75rem;
@@ -97,6 +114,13 @@ textarea {
 .question p {
   margin: 0 0 0.5rem;
   font-weight: 600;
+}
+
+.checkbox-row {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-weight: 500;
 }
 
 .actions {
@@ -149,6 +173,26 @@ button.secondary {
   background: var(--success);
 }
 
+.chart-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr minmax(230px, 300px);
+}
+
+canvas {
+  width: 100%;
+  max-width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 0.45rem;
+  background: white;
+}
+
+.contact-line {
+  margin-top: 0.7rem;
+  padding-top: 0.8rem;
+  border-top: 1px dashed var(--border);
+}
+
 .hint,
 footer {
   color: var(--muted);
@@ -157,4 +201,11 @@ footer {
 footer {
   padding: 1rem;
   font-size: 0.9rem;
+}
+
+@media (max-width: 900px) {
+  .hero-wrap,
+  .chart-grid {
+    grid-template-columns: 1fr;
+  }
 }
