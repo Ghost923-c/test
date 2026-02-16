@@ -42,16 +42,23 @@
           <div class="metric-tile"><strong>220</strong><span>Respondents using AI</span></div>
           <div class="metric-tile"><strong>10.6%</strong><span>AI usage across sector</span></div>
         </div>
+
         <div class="chart-grid peer-charts">
-          <div>
-            <h4>AI adoption by sector (%)</h4>
-            <canvas id="peerAdoptionChart" width="900" height="320"></canvas>
+          <div class="chart-card">
+            <h3>AI adoption by sector (%)</h3>
+            <div class="chart-box">
+              <canvas id="adoptionChart"></canvas>
+            </div>
           </div>
-          <div>
-            <h4>Intended AI investment (2024)</h4>
-            <canvas id="peerInvestmentChart" width="420" height="320"></canvas>
+
+          <div class="chart-card">
+            <h3>Intended AI investment (2024)</h3>
+            <div class="chart-box">
+              <canvas id="investmentChart"></canvas>
+            </div>
           </div>
         </div>
+
         <p class="hint">Source: SARB/FSCA Artificial Intelligence in the South African Financial Sector Databook.</p>
       </section>
     </section>
@@ -148,6 +155,7 @@
     Built for legal-tech advisory workflows. Data stays in-browser unless you add your own backend/API.
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="app.js" defer></script>
 </body>
 </html>
