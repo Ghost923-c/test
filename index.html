@@ -8,12 +8,15 @@
 </head>
 <body>
   <header class="hero">
-    <div>
-      <p class="eyebrow">South Africa • Legal Sector</p>
-      <h1>AI Readiness Audit Toolkit</h1>
-      <p>
-        A practical internal tool for your technology and communications teams to assess how prepared businesses are for AI adoption.
-      </p>
+    <div class="hero-wrap">
+      <img class="hero-logo" src="assets/leopard-logo.png" alt="FutureFit AI leopard logo" />
+      <div>
+        <p class="eyebrow">South Africa • Legal Sector</p>
+        <h1> CDH AI Readiness Audit Toolkit</h1>
+        <p>
+          How is your busienss positioned for AI adoption - fututre readiness, controls and compliance?
+        </p>
+      </div>
     </div>
   </header>
 
@@ -23,7 +26,8 @@
       <ol>
         <li>Capture client/business details.</li>
         <li>Score each AI readiness category from 1 (weak) to 5 (strong).</li>
-        <li>Receive an overall maturity level with tailored recommendations.</li>
+        <li>Capture the extended financial-sector governance and GenAI questions.</li>
+        <li>Review graphs + recommendations and download your report files.</li>
       </ol>
       <p class="hint">Tip: later you can connect this app to OpenAI in <code>generateAiSummary()</code> in <code>app.js</code>.</p>
     </section>
@@ -53,9 +57,42 @@
         <h3>AI Readiness Categories</h3>
         <div id="question-list" class="grid one"></div>
 
+        <h3>Financial Sector AI Research Questions</h3>
+        <div class="grid one">
+          <label>
+            19) Customer-facing AI disclosures
+            <textarea id="q19" rows="3" placeholder="What disclosures do you provide for customer-facing AI applications?"></textarea>
+          </label>
+          <label>
+            20) AI testing and validation controls
+            <textarea id="q20" rows="3" placeholder="How do you ensure testing and validation of AI models for reliable outputs?"></textarea>
+          </label>
+          <label>
+            21) Safe/sound/responsible AI adoption methods
+            <textarea id="q21" rows="3" placeholder="Which approaches are most suitable for the financial sector?"></textarea>
+          </label>
+          <label>
+            22) Regulatory simplification/strengthening ideas
+            <textarea id="q22" rows="3" placeholder="How should regulation be simplified, strengthened or extended for AI risks?"></textarea>
+          </label>
+          <label>
+            23) AI/ML use across value chain (example)
+            <textarea id="q23" rows="3" placeholder="Provide one example and explain implementation."></textarea>
+          </label>
+          <label>
+            24) Generative AI use across value chain (example)
+            <textarea id="q24" rows="3" placeholder="Provide one example and explain implementation."></textarea>
+          </label>
+        </div>
+
+        <h3>Generative AI Use Cases (select all that apply)</h3>
+        <div id="usecase-list" class="grid two"></div>
+
         <div class="actions">
           <button type="submit">Generate Audit Result</button>
-          <button type="button" id="exportBtn">Export as JSON</button>
+          <button type="button" id="downloadJsonBtn">Download JSON</button>
+          <button type="button" id="downloadCsvBtn">Download CSV</button>
+          <button type="button" id="downloadTxtBtn">Download Text Report</button>
           <button type="reset" id="resetBtn" class="secondary">Reset</button>
         </div>
       </form>
@@ -64,7 +101,18 @@
     <section id="results" class="card hidden" aria-live="polite">
       <h2>Audit Results</h2>
       <div id="score-breakdown"></div>
+      <div class="chart-grid">
+        <div>
+          <h3>Category Score Graph</h3>
+          <canvas id="scoreChart" width="900" height="300"></canvas>
+        </div>
+        <div>
+          <h3>Maturity Graph</h3>
+          <canvas id="maturityChart" width="280" height="280"></canvas>
+        </div>
+      </div>
       <div id="recommendations"></div>
+      <p class="contact-line"><strong>Reach out to us at <a href="mailto:FuturefitAI@legal.com">FuturefitAI@legal.com</a>.</strong></p>
       <details>
         <summary>Optional AI-generated narrative (placeholder)</summary>
         <p id="ai-summary">No AI summary generated yet.</p>
