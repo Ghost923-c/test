@@ -73,6 +73,38 @@ main {
   box-shadow: 0 6px 18px rgba(31, 79, 153, 0.06);
 }
 
+.peer-section {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--border);
+}
+
+.peer-metrics {
+  display: grid;
+  gap: 0.7rem;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  margin-bottom: 0.9rem;
+}
+
+.metric-tile {
+  background: #f8faff;
+  border: 1px solid var(--border);
+  border-radius: 0.6rem;
+  padding: 0.7rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.metric-tile strong {
+  font-size: 1.2rem;
+  color: #1e3a8a;
+}
+
+.metric-tile span {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
 .grid {
   display: grid;
   gap: 0.9rem;
@@ -179,6 +211,10 @@ button.secondary {
   grid-template-columns: 1fr minmax(230px, 300px);
 }
 
+.peer-charts {
+  grid-template-columns: 1.2fr 1fr;
+}
+
 canvas {
   width: 100%;
   max-width: 100%;
@@ -205,7 +241,8 @@ footer {
 
 @media (max-width: 900px) {
   .hero-wrap,
-  .chart-grid {
+  .chart-grid,
+  .peer-charts {
     grid-template-columns: 1fr;
   }
 }
