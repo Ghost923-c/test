@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Readiness Audit | Law Firm Team Toolkit</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="hero">
+    <div>
+      <p class="eyebrow">South Africa • Legal Sector</p>
+      <h1>AI Readiness Audit Toolkit</h1>
+      <p>
+        A practical internal tool for your technology and communications teams to assess how prepared businesses are for AI adoption.
+      </p>
+    </div>
+  </header>
+
+  <main>
+    <section class="card intro">
+      <h2>How it works</h2>
+      <ol>
+        <li>Capture client/business details.</li>
+        <li>Score each AI readiness category from 1 (weak) to 5 (strong).</li>
+        <li>Receive an overall maturity level with tailored recommendations.</li>
+      </ol>
+      <p class="hint">Tip: later you can connect this app to OpenAI in <code>generateAiSummary()</code> in <code>app.js</code>.</p>
+    </section>
+
+    <section class="card">
+      <h2>Audit Details</h2>
+      <form id="audit-form">
+        <div class="grid two">
+          <label>
+            Business Name
+            <input type="text" id="businessName" required placeholder="Example: Ubuntu Manufacturing" />
+          </label>
+          <label>
+            Industry
+            <input type="text" id="industry" required placeholder="Example: Financial Services" />
+          </label>
+          <label>
+            Contact Person
+            <input type="text" id="contact" required placeholder="Name + role" />
+          </label>
+          <label>
+            Audit Date
+            <input type="date" id="auditDate" required />
+          </label>
+        </div>
+
+        <h3>AI Readiness Categories</h3>
+        <div id="question-list" class="grid one"></div>
+
+        <div class="actions">
+          <button type="submit">Generate Audit Result</button>
+          <button type="button" id="exportBtn">Export as JSON</button>
+          <button type="reset" id="resetBtn" class="secondary">Reset</button>
+        </div>
+      </form>
+    </section>
+
+    <section id="results" class="card hidden" aria-live="polite">
+      <h2>Audit Results</h2>
+      <div id="score-breakdown"></div>
+      <div id="recommendations"></div>
+      <details>
+        <summary>Optional AI-generated narrative (placeholder)</summary>
+        <p id="ai-summary">No AI summary generated yet.</p>
+      </details>
+    </section>
+  </main>
+
+  <footer>
+    Built for legal-tech advisory workflows. Data stays in-browser unless you add your own backend/API.
+  </footer>
+
+  <script src="app.js" defer></script>
+</body>
+</html>
