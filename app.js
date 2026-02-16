@@ -60,6 +60,9 @@ const downloadCsvBtn = document.getElementById("downloadCsvBtn");
 const downloadTxtBtn = document.getElementById("downloadTxtBtn");
 const resetBtn = document.getElementById("resetBtn");
 
+let adoptionChartInstance;
+let investmentChartInstance;
+
 buildQuestions();
 buildUseCases();
 setDefaultDate();
@@ -213,16 +216,77 @@ function renderResults(payload, result) {
 }
 
 function drawPeerGraphs() {
-  drawBarChart("peerAdoptionChart", sectorAdoptionData, {
-    maxValue: 60,
-    barColor: "#4f46e5",
-    yLabel: "% adoption",
+  const hasChartJs = typeof window.Chart !== "undefined";
+
+  if (!hasChartJs) {
+    drawBarChart("adoptionChart", sectorAdoptionData, { maxValue: 60, barColor: "#4f46e5", yLabel: "% adoption" });
+    drawBarChart("investmentChart", investmentBandData, { maxValue: 55, barColor: "#0f766e", yLabel: "% share" });
+    return;
+  }
+
+  const commonOptions = {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+    },
+    layout: {
+      padding: { top: 8, right: 8, bottom: 8, left: 8 },
+    },
+  };
+
+  const adoptionData = {
+    labels: sectorAdoptionData.map((item) => item.label),
+    datasets: [{ data: sectorAdoptionData.map((item) => item.percent), backgroundColor: "#4f46e5" }],
+  };
+
+  const investmentData = {
+    labels: investmentBandData.map((item) => item.label),
+    datasets: [{ data: investmentBandData.map((item) => item.percent), backgroundColor: "#0f766e" }],
+  };
+
+  if (adoptionChartInstance) {
+    adoptionChartInstance.destroy();
+  }
+
+  if (investmentChartInstance) {
+    investmentChartInstance.destroy();
+  }
+
+  adoptionChartInstance = new Chart(document.getElementById("adoptionChart"), {
+    type: "bar",
+    data: adoptionData,
+    options: {
+      ...commonOptions,
+      scales: {
+        y: { beginAtZero: true, suggestedMax: 60 },
+        x: {
+          ticks: {
+            maxRotation: 0,
+            minRotation: 0,
+            autoSkip: false,
+          },
+        },
+      },
+    },
   });
 
-  drawBarChart("peerInvestmentChart", investmentBandData, {
-    maxValue: 55,
-    barColor: "#0f766e",
-    yLabel: "% share",
+  investmentChartInstance = new Chart(document.getElementById("investmentChart"), {
+    type: "bar",
+    data: investmentData,
+    options: {
+      ...commonOptions,
+      scales: {
+        y: { beginAtZero: true, suggestedMax: 55 },
+        x: {
+          ticks: {
+            maxRotation: 35,
+            minRotation: 35,
+            autoSkip: false,
+          },
+        },
+      },
+    },
   });
 }
 
