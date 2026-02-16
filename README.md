@@ -25,6 +25,11 @@ Add the provided leopard logo image to this path:
 
 The main banner loads the logo from that path.
 
+## Chart rendering
+
+- Peer benchmark charts use Chart.js via CDN in `index.html`.
+- If Chart.js is unavailable, the app falls back to canvas-drawn bars for the peer charts.
+
 ## Run locally
 
 ```bash
